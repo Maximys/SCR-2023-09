@@ -22,14 +22,8 @@ object LinearAlgebraOps{
   }
 
   def axpy(a: Int, v1: Array[Int], v2: Array[Int]): Array[Int] = {
-    if (v1.length != v2.length) {
-      throw new Exception("Operation is not supported");
-    } else {
-      var returnValue = Array.ofDim[Int](v1.length);
-      for (i <- 0 until v1.length) {
-        returnValue(i) = a * v1(i) + v2(i);
-      }
-      returnValue;
-    }
+    var returnValue = Array.ofDim[Int](v1.length);
+    returnValue = sum(scale(a, v1), v2);
+    returnValue;
   }
 }
