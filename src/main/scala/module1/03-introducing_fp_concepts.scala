@@ -189,6 +189,15 @@ object hof{
       case Some(v) => f(v)
       case None => None
     }
+
+    /**
+     *
+     * Реализовать метод printIfAny, который будет печатать значение, если оно есть
+     */
+    def printIfAny(): Unit = this match {
+      case Some(v) => println(v)
+      case None =>
+    }
   }
   case class Some[T](v: T) extends Option[T]
   case object None extends Option[Nothing]
@@ -205,11 +214,6 @@ object hof{
   // Contravariant - отношения переносятся на контейнер наоборот
   // Invariant - нет отношений
 
-
-  /**
-   *
-   * Реализовать метод printIfAny, который будет печатать значение, если оно есть
-   */
 
 
   /**
