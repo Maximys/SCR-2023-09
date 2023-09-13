@@ -1,9 +1,6 @@
 package module1
 
-import java.util.UUID
 import scala.annotation.tailrec
-import java.time.Instant
-import scala.collection.immutable.Stack
 import scala.language.postfixOps
 
 
@@ -53,8 +50,18 @@ object recursion {
    * F0 = 0, F1 = 1, Fn = Fn-1 + Fn - 2
    *
    */
-
-
+  def Fibonacci(n: Int): Int =
+    if (n < 0) {
+      throw new Exception("n value should be greater or equal to 0");
+    }
+    else
+    {
+      n match {
+        case 0 => 0
+        case 1 => 1
+        case _ => Fibonacci(n - 1) + Fibonacci(n - 2)
+      }
+    }
 }
 
 object hof{
@@ -219,10 +226,6 @@ object hof{
 
  }
 
-  trait Animal
-  case object Dog
-  case object Cat
-
  object list {
    /**
     *
@@ -231,9 +234,6 @@ object hof{
     * Nil - пустой список
     * Cons - непустой, содердит первый элемент (голову) и хвост (оставшийся список)
     */
-
-   Seq
-
 
     sealed trait List[+T] {
      /**
