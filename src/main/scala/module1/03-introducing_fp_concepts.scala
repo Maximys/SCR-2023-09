@@ -252,6 +252,10 @@ object hof{
       * Метод cons, добавляет элемент в голову списка, для этого метода можно воспользоваться названием `::`
       *
       */
+     def ::[S >: T](newHead: S) : List[S] = this match {
+       case list.::(_, _) => list.::(newHead, this)
+       case list.Nil => list.::(newHead, list.Nil)
+     }
 
      /**
       * Метод mkString возвращает строковое представление списка, с учетом переданного разделителя
