@@ -210,6 +210,16 @@ object hof{
       }
       case None => None
     }
+
+    /**
+     *
+     * Реализовать метод filter, который будет возвращать не пустой Option
+     * в случае если исходный не пуст и предикат от значения = true
+     */
+    def filter(): (Option[T], Boolean) = this match {
+      case Some(v) => (this, true)
+      case None => (this, false)
+    }
   }
   case class Some[T](v: T) extends Option[T]
   case object None extends Option[Nothing]
@@ -225,15 +235,6 @@ object hof{
   // Covariant + отношения переносятся на контейнер
   // Contravariant - отношения переносятся на контейнер наоборот
   // Invariant - нет отношений
-
-
-
-
-  /**
-   *
-   * Реализовать метод filter, который будет возвращать не пустой Option
-   * в случае если исходный не пуст и предикат от значения = true
-   */
 
  }
 
