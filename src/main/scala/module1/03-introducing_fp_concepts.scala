@@ -285,7 +285,14 @@ object hof{
       *
       * Реализовать метод map для списка который будет применять некую ф-цию к элементам данного списка
       */
+     def map[B](f: T => B): List[B] = {
+       def loop(currentList: List[T], acc: List[B]): List[B] = currentList match {
+         case list.::(head, tail) => loop(tail, list.::(f(head), acc));
+         case list.Nil => acc.reverse()
+       }
 
+       loop(this, List[B]());
+     }
 
      /**
       *

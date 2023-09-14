@@ -13,5 +13,8 @@ object Main {
     val myReversedList = myList.reverse();
 
     Console.println(myReversedList.mkString(";"));
+
+    val myMappedList = myList.map(_+1);
+    Console.println(myMappedList.mkString(";"));
   }
 }
