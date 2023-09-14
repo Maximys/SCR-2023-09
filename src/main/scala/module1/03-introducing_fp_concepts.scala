@@ -261,6 +261,14 @@ object hof{
       * Метод mkString возвращает строковое представление списка, с учетом переданного разделителя
       *
       */
+     def mkString(delimetr: String): String = {
+       def loop(currentList: List[T], delimetr: String): String = currentList match {
+         case list.::(head, tail) => head + delimetr + loop(tail, delimetr);
+         case list.Nil => delimetr;
+       }
+
+       loop(this, delimetr);
+     }
 
      /**
       *
