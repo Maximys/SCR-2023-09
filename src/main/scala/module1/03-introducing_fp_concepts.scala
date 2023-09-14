@@ -274,6 +274,14 @@ object hof{
       *
       * Реализовать метод reverse который позволит заменить порядок элементов в списке на противоположный
       */
+      def reverse(): List[T] = {
+        def loop(currentList: List[T], acc: List[T]): List[T] = currentList match {
+          case list.::(head, tail) => loop(tail, list.::(head, acc));
+          case list.Nil => acc;
+        }
+
+        loop(this, List[T]());
+      }
 
      /**
       *
