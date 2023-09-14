@@ -262,12 +262,10 @@ object hof{
       *
       */
      def mkString(delimetr: String): String = {
-       def loop(currentList: List[T], delimetr: String): String = currentList match {
-         case list.::(head, tail) => head + delimetr + loop(tail, delimetr);
-         case list.Nil => delimetr;
+       this match {
+         case list.::(head, tail) => head + delimetr + tail.mkString(delimetr);
+         case list.Nil => ""
        }
-
-       loop(this, delimetr);
      }
 
      /**
