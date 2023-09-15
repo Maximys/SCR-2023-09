@@ -330,18 +330,18 @@ object hof{
        */
       def incList(args: list.List[Int]) : list.List[Int] =
         args.map(_+1);
+
+      /**
+       *
+       * Написать функцию shoutString котрая будет принимать список String и возвращать список,
+       * где к каждому элементу будет добавлен префикс в виде '!'
+       */
+      def shoutString(silentStrings: list.List[String]): list.List[String] =
+        silentStrings.map("!".concat);
     }
 
     // Пример создания экземпляра с помощью конструктора apply
 
     List(1, 2, 3)
-
-
-
-    /**
-      *
-      * Написать функцию shoutString котрая будет принимать список String и возвращать список,
-      * где к каждому элементу будет добавлен префикс в виде '!'
-      */
 
  }

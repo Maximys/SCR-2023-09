@@ -1,5 +1,5 @@
 import module1.list.List
-import module1.list.List.incList
+import module1.list.List.{incList, shoutString}
 import module1.{hof, type_system}
 
 object Main {
@@ -23,5 +23,9 @@ object Main {
 
     val myIncreasedList = incList(myList);
     Console.println(myIncreasedList.mkString(";"));
+
+    val myStringList = List("Hello", "World");
+    val myShoutList = shoutString(myStringList);
+    Console.println(myShoutList.mkString(";"));
   }
 }
