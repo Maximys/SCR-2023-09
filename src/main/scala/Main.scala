@@ -1,4 +1,5 @@
 import module1.list.List
+import module1.list.List.incList
 import module1.{hof, type_system}
 
 object Main {
@@ -19,5 +20,8 @@ object Main {
 
     val myFilteredList = myList.filter(x => x > 1);
     Console.println(myFilteredList.mkString(";"));
+
+    val myIncreasedList = incList(myList);
+    Console.println(myIncreasedList.mkString(";"));
   }
 }
