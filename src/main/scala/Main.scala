@@ -11,21 +11,23 @@ object Main {
     r("Doomy")
 
     val myList = List(1, 2, 3);
+    Console.println("myList: \"" + myList.mkString(";") + "\"");
+
     val myReversedList = myList.reverse();
 
-    Console.println(myReversedList.mkString(";"));
+    Console.println("myReversedList: \"" + myReversedList.mkString(";") + "\"");
 
     val myMappedList = myList.map(_+1);
-    Console.println(myMappedList.mkString(";"));
+    Console.println("myMappedList: \"" + myMappedList.mkString(";") + "\"");
 
     val myFilteredList = myList.filter(x => x > 1);
-    Console.println(myFilteredList.mkString(";"));
+    Console.println("myFilteredList: \"" + myFilteredList.mkString(";") + "\"");
 
     val myIncreasedList = incList(myList);
-    Console.println(myIncreasedList.mkString(";"));
+    Console.println("myIncreasedList: \"" + myIncreasedList.mkString(";") + "\"");
 
     val myStringList = List("Hello", "World");
     val myShoutList = shoutString(myStringList);
-    Console.println(myShoutList.mkString(";"));
+    Console.println("myShoutList: \"" + myShoutList.mkString(";") + "\"");
   }
 }
