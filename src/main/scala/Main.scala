@@ -16,5 +16,8 @@ object Main {
 
     val myMappedList = myList.map(_+1);
     Console.println(myMappedList.mkString(";"));
+
+    val myFilteredList = myList.filter(x => x > 1);
+    Console.println(myFilteredList.mkString(";"));
   }
 }

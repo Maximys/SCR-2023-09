@@ -298,6 +298,15 @@ object hof{
       *
       * Реализовать метод filter для списка который будет фильтровать список по некому условию
       */
+     def filter(f: T => Boolean): List[T] = {
+       def loop(currentList: List[T], acc: List[T]): List[T] = currentList match {
+         case list.::(head, tail) if (f(head)) => loop(tail, list.::(head, acc));
+         case list.::(_, tail) => loop(tail, acc);
+         case list.Nil => acc
+       }
+
+       loop(this, List[T]());
+     }
    }
     case class ::[A](head: A, tail: List[A]) extends List[A]
     case object Nil extends List[Nothing]
