@@ -203,12 +203,9 @@ object hof{
      *
      * Реализовать метод zip, который будет создавать Option от пары значений из 2-х Option
      */
-    def zip[B](secondOption: Option[B]): Option[(T, B)] = this match {
-      case Some(v) => secondOption match {
-        case Some(vSO) => new Option[(T, B)] {(v, vSO)}
-        case None => None
-      }
-      case None => None
+    def zip[B](secondOption: Option[B]): Option[(T, B)] = (this, secondOption) match {
+      case (Some(v), Some(vSO)) => new Option[(T, B)] {(v, vSO)}
+      case _ => None
     }
 
     /**
