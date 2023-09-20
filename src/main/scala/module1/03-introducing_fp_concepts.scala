@@ -300,7 +300,8 @@ object hof{
          case list.Nil => acc
        }
 
-       loop(this, List[T]());
+       loop(this, List[T]())
+         .reverse();
      }
    }
     case class ::[A](head: A, tail: List[A]) extends List[A]
