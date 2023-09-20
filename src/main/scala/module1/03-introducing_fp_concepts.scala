@@ -257,14 +257,8 @@ object hof{
       */
      def mkString(delimetr: String): String = {
        this match {
-         case list.::(head, tail) => {
-           var representationOfTail: String = tail.mkString(delimetr);
-           if (representationOfTail.nonEmpty) {
-             head + delimetr + representationOfTail;
-           } else {
-             head.toString;
-           }
-         }
+         case list.::(head, Nil) => s"$head"
+         case list.::(head, tail) => head + delimetr + tail.mkString(delimetr)
          case list.Nil => ""
        }
      }
