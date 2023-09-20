@@ -213,9 +213,9 @@ object hof{
      * Реализовать метод filter, который будет возвращать не пустой Option
      * в случае если исходный не пуст и предикат от значения = true
      */
-    def filter(p: T => Boolean): (Option[T], Boolean) = this match {
-      case Some(v) => (this, p(v))
-      case None => (this, false)
+    def filter(p: T => Boolean): Option[T] = this match {
+      case Some(v) if(p(v)) => this
+      case _ => None
     }
   }
   case class Some[T](v: T) extends Option[T]
