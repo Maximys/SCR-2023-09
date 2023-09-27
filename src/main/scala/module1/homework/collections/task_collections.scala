@@ -16,7 +16,17 @@ object task_collections {
    *
    * **/
   def capitalizeIgnoringASCII(text: List[String]): List[String] = {
-    List.empty
+    text.zipWithIndex.collect( { case (currentElement, currentIndex) =>
+      if (currentIndex == 0) {
+        currentElement
+      } else {
+        if (isASCIIString(currentElement)) {
+          currentElement.toUpperCase()
+        } else {
+          currentElement.toLowerCase()
+        }
+      }
+    })
   }
 
   /**
