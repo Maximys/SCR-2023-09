@@ -36,4 +36,17 @@ object cats_homework {
       def myToString(implicit vs: Show[T]): String = vs.myToString(v)
     }
   }
+
+  trait Monad[F[_]] {
+    def flatMap[T1, T2](f1: F[T1])(f2: T1 => F[T2]): F[T2];
+    def flatten[T](f: F[F[T]]): F[T] = flatMap(f)(x => x);
+  }
+
+  object Monad {
+    def apply[F[_]](implicit value: Monad[F]): Monad[F] = value;
+
+    implicit def listMonad: Monad[List] = new Monad[List] {
+      def flatMap[T1, T2](f1: List[T1])(f2: T1 => List[T2]): List[T2] = f1.flatMap(f2);
+    }
+  }
 }
