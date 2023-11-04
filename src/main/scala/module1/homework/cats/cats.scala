@@ -48,5 +48,12 @@ object cats_homework {
     implicit def listMonad: Monad[List] = new Monad[List] {
       def flatMap[T1, T2](f1: List[T1])(f2: T1 => List[T2]): List[T2] = f1.flatMap(f2);
     }
+
+    implicit def optionMonad: Monad[Option] = new Monad[Option] {
+      def flatMap[T1, T2](f1: Option[T1])(f2: T1 => Option[T2]): Option[T2] = f1 match {
+        case Some(x) => f2(x)
+        case None => None
+      }
+    }
   }
 }
