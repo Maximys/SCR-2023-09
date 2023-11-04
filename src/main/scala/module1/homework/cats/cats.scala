@@ -55,5 +55,9 @@ object cats_homework {
         case None => None
       }
     }
+
+    implicit def setMonad: Monad[Set] = new Monad[Set] {
+      def flatMap[T1, T2](f1: Set[T1])(f2: T1 => Set[T2]): Set[T2] = f1.flatMap(f2);
+    }
   }
 }
