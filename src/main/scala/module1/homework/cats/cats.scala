@@ -17,11 +17,11 @@ object cats_homework {
     }
 
     implicit val booleanShow = new Show[Boolean] {
-      override def myToString(x: Boolean): String = x.toString.myToString;
+      override def myToString(x: Boolean): String = x.toString;
     }
 
     implicit val intShow = new Show[Int] {
-      override def myToString(x: Int): String = x.toString.myToString;
+      override def myToString(x: Int): String = x.toString;
     }
 
     implicit def listShow[A](implicit valueShow: Show[A]): Show[List[A]] = Show.fromFunction[List[A]] {
