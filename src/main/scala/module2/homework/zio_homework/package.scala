@@ -27,25 +27,18 @@ package object zio_homework {
   //вывести результат сравнения
 
   val leftInclusiveRandomBorder = 1;
-  val rightExclusiveRandomBorder = 2;
+  val rightExclusiveRandomBorder = 4;
 
   def requestNumberInTheRange(leftBorder: Int, rightBorder: Int) =
-    ZIO.fromTry(Try {
-      for {
-        _ <- putStrLn(s"Введите число от ${leftBorder} до ${rightBorder}")
-        rawInputValue <- getStrLn
-        intValue <- ZIO.effect(rawInputValue.toInt)
-        _ <- ZIO.effect(if ((intValue < leftBorder)
-          || (intValue >= rightBorder)) {
-          throw new Exception(s"Введенное число должно быть больше или равно ${leftBorder} и меньше ${rightBorder}");
-        })
-      } yield intValue
-    }).retry(Schedule.forever)
+    for {
+      _ <- putStrLn(s"Введите число от ${leftBorder} до ${rightBorder}")
+      rawInputValue <- getStrLn
+      intValue <- ZIO.effect(Try(rawInputValue.toInt).getOrElse(0))
+    } yield intValue
 
   lazy val guessProgram = for {
     hiddenNumber: Int <- nextIntBetween(leftInclusiveRandomBorder, rightExclusiveRandomBorder)
-    inputValue <- zio.Runtime.default.unsafeRun(
-      requestNumberInTheRange(leftInclusiveRandomBorder, rightExclusiveRandomBorder))
+    inputValue <- requestNumberInTheRange(leftInclusiveRandomBorder, rightExclusiveRandomBorder - 1)
     equals <- ZIO.succeed(hiddenNumber == inputValue)
     _ <- if (equals) {
       putStrLn("Поздравляем Вас! Загаданное число и число, введенное Вами, равны");

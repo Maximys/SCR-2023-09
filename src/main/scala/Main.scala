@@ -110,7 +110,7 @@ object Main {
     println(myBool.myToString);*/
 
 
-    //zio.Runtime.default.unsafeRun(guessProgram);
+    zio.Runtime.default.unsafeRun(guessProgram);
     //List.range(0, 9).foreach(r => println(r));
     zio.Runtime.default.unsafeRun(app);
     zio.Runtime.default.unsafeRun(appSpeedUp);
