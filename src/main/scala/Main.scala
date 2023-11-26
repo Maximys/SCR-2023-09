@@ -10,7 +10,10 @@ import module1.homework.cats.cats_homework.Show.ShowSyntax
 import module1.{executor, future, hof, lazyOps, list, try_, type_system, validation}
 import module2.{toyCatsEffect, toyModel, typeClasses, zioConcurrency, zioConstructors}
 import module2.functional_effects.functionalProgram.{declarativeEncoding, executableEncoding}
-import zio.ZIO
+import module2.homework.zio_homework.{app, appSpeedUp, guessProgram}
+import zio.{Schedule, ZIO}
+import zio.console.putStrLn
+import zio.random.nextIntBounded
 
 import scala.concurrent.Future
 import scala.io.StdIn
@@ -97,14 +100,20 @@ object Main {
 
     //zio.Runtime.default.unsafeRun(zioConcurrency.g1)
 
-    var list: List[Int] = Nil
+    /*var list: List[Int] = Nil
     println(list.myToString);
 
     list = List(1, 2, 3);
     println(list.myToString);
 
     var myBool: Boolean = true;
-    println(myBool.myToString);
+    println(myBool.myToString);*/
+
+
+    zio.Runtime.default.unsafeRun(guessProgram);
+    //List.range(0, 9).foreach(r => println(r));
+    zio.Runtime.default.unsafeRun(app);
+    zio.Runtime.default.unsafeRun(appSpeedUp);
   }
 }
 
